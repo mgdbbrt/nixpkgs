@@ -8,14 +8,14 @@
 
 buildPythonPackage rec {
   pname = "oelint-data";
-  version = "1.0.15";
+  version = "1.0.28";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "priv-kweihmann";
     repo = "oelint-data";
     tag = version;
-    hash = "sha256-OZtBJWjAYuwXt1ehgt6bIZPeVByXCjOcctPJGLrsxiU=";
+    hash = "sha256-y/feC6p7Aab2ypjIW5o7IurqlvN6V9Q20xTF4fDlDj4=";
   };
 
   build-system = [

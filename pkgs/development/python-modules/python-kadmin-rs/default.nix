@@ -17,19 +17,25 @@
 
 buildPythonPackage rec {
   pname = "python-kadmin-rs";
-  version = "0.6.0";
+  version = "0.6.1";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "authentik-community";
     repo = "kadmin-rs";
     rev = "kadmin/version/${version}";
-    hash = "sha256-dtHLhiUjFqINrkIcx72tIRnaWEl15iA/q7DJ28/gPJk=";
+    hash = "sha256-FEOWsUQhLXU1xqaTLe6GKO1OYi5fVDyT1dowiAyzbGI=";
   };
+
+  postPatch = ''
+    # https://github.com/authentik-community/kadmin-rs/issues/213
+    substituteInPlace kadmin-sys/build.rs \
+      --replace-fail 'bindgen::builder()' 'bindgen::builder().allowlist_type("krb5_boolean")'
+  '';
 
   cargoDeps = rustPlatform.fetchCargoVendor {
     inherit src;
-    hash = "sha256-E/AQrhLsp86cBWz6SOukA1hbpuTogkFzDXlbH+tpInQ=";
+    hash = "sha256-tvjwNfjMc8k4GK9rZXFG9CfcSlUW/B95YimLtH4iEbM=";
   };
 
   buildInputs = [

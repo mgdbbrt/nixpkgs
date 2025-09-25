@@ -4,6 +4,7 @@
   aioresponses,
   bleak,
   buildPythonPackage,
+  cryptography,
   fetchFromGitHub,
   mashumaro,
   pytest-asyncio,
@@ -15,7 +16,7 @@
 
 buildPythonPackage rec {
   pname = "pylamarzocco";
-  version = "2.0.7";
+  version = "2.1.0";
   pyproject = true;
 
   disabled = pythonOlder "3.12";
@@ -24,7 +25,7 @@ buildPythonPackage rec {
     owner = "zweckj";
     repo = "pylamarzocco";
     tag = "v${version}";
-    hash = "sha256-IFac66zBGvRASXJDa/Y6F3BxZhRD9tG8yAB2l2IsDVk=";
+    hash = "sha256-dUFjbht0QGrWtSl3JIx1dx4UQs5gFNqKw+UObgH25pk=";
   };
 
   build-system = [ setuptools ];
@@ -32,6 +33,7 @@ buildPythonPackage rec {
   dependencies = [
     aiohttp
     bleak
+    cryptography
     mashumaro
   ];
 
